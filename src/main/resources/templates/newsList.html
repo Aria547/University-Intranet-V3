@@ -1,0 +1,18 @@
+    <div style="margin: 0 auto; width:855px;" th:fragment="newsFragment">
+        <div id="accordion" role="tablist" aria-multiselectable="true">
+            <div style="margin-top: 5%; margin-bottom: 5%" th:each="news,iter : ${newsList}" class="card">
+                <div class="card-header" th:id="${headingIdList[iter.index]}">
+                    <h5 class="mb-0">
+				        <button class="btn btn-link" th:text="${dateList[iter.index]}" data-toggle="collapse" th:attr="data-target='#'+${collapseIdList[iter.index]}, aria-expanded='true', aria-controls=${collapseIdList[iter.index]}"> 
+				        </button>
+			     	</h5>
+                </div>
+
+                <div th:id="${collapseIdList[iter.index]}" class="collapse show" th:attr="aria-labelledby=${headingIdList[iter.index]}, data-parent='#accordion'">
+                    <div class="card-body">
+                        <p th:text="${news}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
